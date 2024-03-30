@@ -1,0 +1,9 @@
+{% for anime in animes %}
+  <h3>{{ anime.name }}</h3>
+  <p>Episodes: {{ anime.episodes }}</p >
+  <p>Director: {{ anime.director }}</p >
+  <form action="{% url 'add_to_favorites' anime.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Add to Favorites</button>
+  </form>
+{% endfor %}
