@@ -1,0 +1,31 @@
+<script>
+   function updateUserInfo() {
+    var newEmail = document.getElementById('newEmail').value;
+    var userId = 1; // 这里假设用户ID为1，实际情况根据具体业务逻辑传递用户ID
+    var data = {
+        email: newEmail,
+        userId: userId
+    };
+
+    fetch(`/api/user/update/${userId}/`, {  // 修改这里的URL路径
+        method: 'PUT',  // 使用PUT方法发送更新请求
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (response.ok) {
+            alert("Update successful!");
+            // 更新成功后的操作，可以是页面跳转或其他操作
+        } else {
+            alert("Update failed. Please try again.");
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert("An error occurred. Please try again later.");
+    });
+}
+
+</script>
